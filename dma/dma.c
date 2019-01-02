@@ -12,27 +12,27 @@
 #include <linux/poll.h>
 #include <linux/dma-mapping.h>
 
-//Ô´µØÖ·
+//æºåœ°å€
 static unsigned char *src;
 static unsigned int src_phy;
 
-//Ä¿µÄµØÖ·
+//ç›®çš„åœ°å€
 static unsigned char* dest;
 static unsigned int dest_phy;
 
-//¿Õ¼ä´óÐ¡
+//ç©ºé—´å¤§å°
 #define  DMA_SIZE (1204*512)
 
-//Çý¶¯Àà
+//é©±åŠ¨ç±»
 static struct class *dma_class;
 
-//Ö÷Éè±¸ºÅ
+//ä¸»è®¾å¤‡å·
 static int major ;
 
 #define USE_DMA 1
 #define NO_DMA 0
 
-//DMA¼Ä´æÆ÷
+//DMAå¯„å­˜å™¨
 static struct s3c_dma_reg 
 {
      unsigned long disrc;
@@ -46,16 +46,16 @@ static struct s3c_dma_reg
      unsigned long dmaskting;
 }*s3c_dma_regs;
 
-//DMAµØÖ·
+//DMAåœ°å€
 static unsigned long dma_addr0 = 0x4b000000;
 static unsigned long dma_addr1 = 0x4b000040;
 static unsigned long dma_addr2 = 0x4b000080;
 static unsigned long dma_addr3 = 0x4b0000c0;
 
-//ÎªÕâ¸ö½ø³Ì´´½¨µÈ´ý¶ÓÁÐ
+//ä¸ºè¿™ä¸ªè¿›ç¨‹åˆ›å»ºç­‰å¾…é˜Ÿåˆ—
 static DECLARE_WAIT_QUEUE_HEAD(dma_wait_queue);
 
-//½ø³Ì¶ÓÁÐ±êÖ¾Î»
+//è¿›ç¨‹é˜Ÿåˆ—æ ‡å¿—ä½
 static volatile int dma_wait_queue_condition=0;
 
 
@@ -77,7 +77,7 @@ static int s3c_dma_iotcl(struct inode *inode, struct file *file, unsigned int cm
 	  }
       case USE_DMA :
       	{
-		 // ÉèÖÃDMA¼Ä´æÆ÷
+		 // è®¾ç½®DMAå¯„å­˜å™¨
           s3c_dma_regs->disrc = src_phy;
           s3c_dma_regs->disrcc = (0<<0)|(0<<0);
           s3c_dma_regs->didst = dest_phy;
@@ -85,8 +85,8 @@ static int s3c_dma_iotcl(struct inode *inode, struct file *file, unsigned int cm
           s3c_dma_regs->dcon = (1<<30)|(1<<29)|(0<<28)|(1<<27)|(0<<23)|(0<<20)|(DMA_SIZE<<0);
 		  s3c_dma_regs->dmaskting = (1<<1)|(1<<0);
 
-         //ÐÝÃß½ø³Ì
-		  dma_wait_queue_condition = 0; 	 //×´Ì¬±êÖ¾Î»Îª¼Ù		 ÐÝÃßdma.c½ø³Ì	  ¡£ ½ø³Ì¿É±»ÐÅºÅÖÐ¶ÏÐÝÃß,·µ»Ø·Ç0Öµ±íÊ¾ÐÝÃß±»ÐÅºÅÖÐ¶Ï
+         //ä¼‘çœ è¿›ç¨‹
+		  dma_wait_queue_condition = 0;//çŠ¶æ€æ ‡å¿—ä½ä¸ºå‡ä¼‘çœ dma.cè¿›ç¨‹ã€‚ è¿›ç¨‹å¯è¢«ä¿¡å·ä¸­æ–­ä¼‘çœ ,è¿”å›žéž0å€¼è¡¨ç¤ºä¼‘çœ è¢«ä¿¡å·ä¸­æ–­
           wait_event_interruptible(dma_wait_queue, dma_wait_queue_condition);  
 
 		  if(memcmp(src,dest,DMA_SIZE) == 0) printk(" copy with DMA successfuly !\n");
@@ -98,7 +98,7 @@ static int s3c_dma_iotcl(struct inode *inode, struct file *file, unsigned int cm
 
 }
 
-//×Ö·ûÉè±¸²Ù×÷º¯Êý
+//å­—ç¬¦è®¾å¤‡æ“ä½œå‡½æ•°
 static struct file_operations dma_fops = 
 {
      .owner = THIS_MODULE,
@@ -106,10 +106,10 @@ static struct file_operations dma_fops =
 };
 
 
-//ÖÐ¶Ï´¦Àíº¯Êý
+//ä¸­æ–­å¤„ç†å‡½æ•°
 static     int s3c_dma_irq(int irq, void *devid)
 {
-	dma_wait_queue_condition = 1;            //×´Ì¬ÎªÕæ     »½ÐÑdma.c½ø³Ì
+	dma_wait_queue_condition = 1;            //çŠ¶æ€ä¸ºçœŸ     å”¤é†’dma.cè¿›ç¨‹
 	wake_up_interruptible(&dma_wait_queue);
     return IRQ_HANDLED;
 }
@@ -117,28 +117,30 @@ static     int s3c_dma_irq(int irq, void *devid)
 
 static int dma_init(void)
 {
-    //ÉêÇëÖÐ¶Ï
+    //ç”³è¯·ä¸­æ–­
     request_irq(IRQ_DMA3, s3c_dma_irq,0, "s3c_dma", 1);
 	
-    //ÉêÇëÔ´µØÖ·¿Õ¼ä
+    //ç”³è¯·æºåœ°å€ç©ºé—´
      src = dma_alloc_writecombine(NULL,DMA_SIZE, &src_phy,GFP_KERNEL);
-     //ÉêÇëÄ¿µÄµØÖ·¿Õ¼ä
+     //ç”³è¯·ç›®çš„åœ°å€ç©ºé—´
 	 dest= dma_alloc_writecombine(NULL,DMA_SIZE, &dest_phy,GFP_KERNEL);
 
-	//dma_regÓ³Éä
+	//dma_regæ˜ å°„
 	 s3c_dma_regs = ioremap(dma_addr3,sizeof(struct s3c_dma_reg));
 
-    //×¢²á×Ö·ûÉè±¸
+    //æ³¨å†Œå­—ç¬¦è®¾å¤‡
     major = register_chrdev(0, "s3c_dma",&dma_fops);
 
-    //×¢²áÀà Éè±¸½Úµã
+    //æ³¨å†Œç±» è®¾å¤‡èŠ‚ç‚¹
+
     dma_class = class_create(THIS_MODULE,"s3c_dma_class");                //     /sys/class/s3c_dma_class
 	class_device_create(dma_class,NULL,MKDEV(major,0),NULL, "s3c_dma");   //     /dev/s3c_dma
 	                                                                      
     return 0;
 }
 
-static void dma_exit(void)
+static void dma_exit(void)
+
 {
    free_irq(IRQ_DMA3,1);
    dma_free_writecombine(NULL,DMA_SIZE, src,GFP_KERNEL);
