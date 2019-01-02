@@ -1,0 +1,205 @@
+
+drv_stack_strace_drv.ko:     file format elf32-littlearm
+
+Disassembly of section .text:
+
+00000000 <first_drv_open>:
+   0:	e1a0c00d 	mov	ip, sp
+   4:	e92dd800 	stmdb	sp!, {fp, ip, lr, pc}
+   8:	e24cb004 	sub	fp, ip, #4	; 0x4
+   c:	e59f1024 	ldr	r1, [pc, #36]	; 38 <__mod_vermagic5>
+  10:	e3a00000 	mov	r0, #0	; 0x0
+  14:	e5912000 	ldr	r2, [r1]
+  18:	e5923000 	ldr	r3, [r2]                       //³ö´í
+  1c:	e3c33c3f 	bic	r3, r3, #16128	; 0x3f00
+  20:	e5823000 	str	r3, [r2]
+  24:	e5912000 	ldr	r2, [r1]
+  28:	e5923000 	ldr	r3, [r2]
+  2c:	e3833c15 	orr	r3, r3, #5376	; 0x1500
+  30:	e5823000 	str	r3, [r2]
+  34:	e89da800 	ldmia	sp, {fp, sp, pc}
+  38:	00000000 	andeq	r0, r0, r0
+
+0000003c <first_drv_write>:
+  3c:	e1a0c00d 	mov	ip, sp
+  40:	e92dd800 	stmdb	sp!, {fp, ip, lr, pc}
+  44:	e24cb004 	sub	fp, ip, #4	; 0x4
+  48:	e24dd004 	sub	sp, sp, #4	; 0x4
+  4c:	e3cd3d7f 	bic	r3, sp, #8128	; 0x1fc0
+  50:	e3c3303f 	bic	r3, r3, #63	; 0x3f
+  54:	e5933008 	ldr	r3, [r3, #8]
+  58:	e0910002 	adds	r0, r1, r2
+  5c:	30d00003 	sbcccs	r0, r0, r3
+  60:	33a03000 	movcc	r3, #0	; 0x0
+  64:	e3530000 	cmp	r3, #0	; 0x0
+  68:	e24b3010 	sub	r3, fp, #16	; 0x10
+  6c:	e1a00003 	mov	r0, r3
+  70:	1a00001d 	bne	ec <init_module+0x2c>
+  74:	ebfffffe 	bl	74 <first_drv_write+0x38>
+  78:	ea000021 	b	104 <init_module+0x44>
+  7c:	e3520000 	cmp	r2, #0	; 0x0
+  80:	e1a00003 	mov	r0, r3
+  84:	e1a01002 	mov	r1, r2
+  88:	1bfffffe 	blne	88 <first_drv_write+0x4c>
+  8c:	e51b3010 	ldr	r3, [fp, #-16]
+  90:	e59f2024 	ldr	r2, [pc, #36]	; bc <.text+0xbc>
+  94:	e3530001 	cmp	r3, #1	; 0x1
+  98:	05922000 	ldreq	r2, [r2]
+  9c:	15922000 	ldrne	r2, [r2]
+  a0:	05923000 	ldreq	r3, [r2]
+  a4:	15923000 	ldrne	r3, [r2]
+  a8:	03c33070 	biceq	r3, r3, #112	; 0x70
+  ac:	13833070 	orrne	r3, r3, #112	; 0x70
+  b0:	e3a00000 	mov	r0, #0	; 0x0
+  b4:	e5823000 	str	r3, [r2]
+  b8:	e89da808 	ldmia	sp, {r3, fp, sp, pc}
+  bc:	00000000 	andeq	r0, r0, r0
+
+000000c0 <init_module>:
+  c0:	e1a0c00d 	mov	ip, sp
+  c4:	e92dd810 	stmdb	sp!, {r4, fp, ip, lr, pc}
+  c8:	e24cb004 	sub	fp, ip, #4	; 0x4
+  cc:	e24dd004 	sub	sp, sp, #4	; 0x4
+  d0:	e59f2068 	ldr	r2, [pc, #104]	; 140 <.text+0x140>
+  d4:	e59f1068 	ldr	r1, [pc, #104]	; 144 <.text+0x144>
+  d8:	e3a00000 	mov	r0, #0	; 0x0
+  dc:	ebfffffe 	bl	dc <init_module+0x1c>
+  e0:	e59f4060 	ldr	r4, [pc, #96]	; 148 <.text+0x148>
+  e4:	e59f1060 	ldr	r1, [pc, #96]	; 14c <.text+0x14c>
+  e8:	e5840000 	str	r0, [r4]
+  ec:	e59f005c 	ldr	r0, [pc, #92]	; 150 <.text+0x150>
+  f0:	ebfffffe 	bl	f0 <init_module+0x30>
+  f4:	e59fc058 	ldr	ip, [pc, #88]	; 154 <.text+0x154>
+  f8:	e5942000 	ldr	r2, [r4]
+  fc:	e3a01000 	mov	r1, #0	; 0x0
+ 100:	e58c0000 	str	r0, [ip]
+ 104:	e59fc04c 	ldr	ip, [pc, #76]	; 158 <.text+0x158>
+ 108:	e1a03001 	mov	r3, r1
+ 10c:	e1a02a02 	mov	r2, r2, lsl #20
+ 110:	e58dc000 	str	ip, [sp]
+ 114:	ebfffffe 	bl	114 <init_module+0x54>
+ 118:	e59f303c 	ldr	r3, [pc, #60]	; 15c <.text+0x15c>
+ 11c:	e59f103c 	ldr	r1, [pc, #60]	; 160 <.text+0x160>
+ 120:	e5830000 	str	r0, [r3]
+ 124:	e59f3038 	ldr	r3, [pc, #56]	; 164 <.text+0x164>
+ 128:	e2812004 	add	r2, r1, #4	; 0x4
+ 12c:	e5832000 	str	r2, [r3]
+ 130:	e59f3030 	ldr	r3, [pc, #48]	; 168 <.text+0x168>
+ 134:	e3a00000 	mov	r0, #0	; 0x0
+ 138:	e5831000 	str	r1, [r3]
+ 13c:	e89da818 	ldmia	sp, {r3, r4, fp, sp, pc}
+	...
+ 14c:	0000000c 	andeq	r0, r0, ip
+ 150:	00000000 	andeq	r0, r0, r0
+ 154:	0000000c 	andeq	r0, r0, ip
+ 158:	00000018 	andeq	r0, r0, r8, lsl r0
+ 15c:	00000010 	andeq	r0, r0, r0, lsl r0
+ 160:	56000050 	undefined
+	...
+
+0000016c <cleanup_module>:
+ 16c:	e1a0c00d 	mov	ip, sp
+ 170:	e92dd800 	stmdb	sp!, {fp, ip, lr, pc}
+ 174:	e24cb004 	sub	fp, ip, #4	; 0x4
+ 178:	e59f3030 	ldr	r3, [pc, #48]	; 1b0 <.text+0x1b0>
+ 17c:	e59f1030 	ldr	r1, [pc, #48]	; 1b4 <.text+0x1b4>
+ 180:	e5930000 	ldr	r0, [r3]
+ 184:	ebfffffe 	bl	184 <cleanup_module+0x18>
+ 188:	e59f3028 	ldr	r3, [pc, #40]	; 1b8 <.text+0x1b8>
+ 18c:	e5930000 	ldr	r0, [r3]
+ 190:	ebfffffe 	bl	190 <cleanup_module+0x24>
+ 194:	e59f3020 	ldr	r3, [pc, #32]	; 1bc <.text+0x1bc>
+ 198:	e5930000 	ldr	r0, [r3]
+ 19c:	ebfffffe 	bl	19c <cleanup_module+0x30>
+ 1a0:	e59f3018 	ldr	r3, [pc, #24]	; 1c0 <.text+0x1c0>
+ 1a4:	e5930000 	ldr	r0, [r3]
+ 1a8:	ebfffffe 	bl	1a8 <cleanup_module+0x3c>
+ 1ac:	e89da800 	ldmia	sp, {fp, sp, pc}
+	...
+ 1b8:	00000010 	andeq	r0, r0, r0, lsl r0
+ 1bc:	0000000c 	andeq	r0, r0, ip
+ 1c0:	00000000 	andeq	r0, r0, r0
+Disassembly of section .modinfo:
+
+00000000 <__mod_license86>:
+   0:	6563696c 	strvsb	r6, [r3, #-2412]!
+   4:	3d65736e 	stcccl	3, cr7, [r5, #-440]!
+   8:	004c5047 	subeq	r5, ip, r7, asr #32
+
+0000000c <__module_depends>:
+   c:	65706564 	ldrvsb	r6, [r0, #-1380]!
+  10:	3d73646e 	cfldrdcc	mvd6, [r3, #-440]!
+  14:	6c697562 	cfstr64vs	mvdx7, [r9], #-392
+  18:	6e692d74 	mcrvs	13, 3, r2, cr9, cr4, {3}
+  1c:	6975622c 	ldmvsdb	r5!, {r2, r3, r5, r9, sp, lr}^
+  20:	692d746c 	stmvsdb	sp!, {r2, r3, r5, r6, sl, ip, sp, lr}
+  24:	75622c6e 	strvcb	r2, [r2, #-3182]!
+  28:	2d746c69 	ldccsl	12, cr6, [r4, #-420]!
+  2c:	622c6e69 	eorvs	r6, ip, #1680	; 0x690
+  30:	746c6975 	strvcbt	r6, [ip], #-2421
+  34:	006e692d 	rsbeq	r6, lr, sp, lsr #18
+
+00000038 <__mod_vermagic5>:
+  38:	6d726576 	cfldr64vs	mvdx6, [r2, #-472]!
+  3c:	63696761 	cmnvs	r9, #25427968	; 0x1840000
+  40:	362e323d 	undefined
+  44:	2e32322e 	cdpcs	2, 3, cr3, cr2, cr14, {1}
+  48:	6f6d2036 	swivs	0x006d2036
+  4c:	6e755f64 	cdpvs	15, 7, cr5, cr5, cr4, {3}
+  50:	64616f6c 	strvsbt	r6, [r1], #-3948
+  54:	4d524120 	ldfmie	f4, [r2, #-128]
+  58:	00203476 	eoreq	r3, r0, r6, ror r4
+Disassembly of section .rodata.str1.4:
+
+00000000 <.rodata.str1.4>:
+   0:	73726966 	cmnvc	r2, #1671168	; 0x198000
+   4:	72645f74 	rsbvc	r5, r4, #464	; 0x1d0
+   8:	00000076 	andeq	r0, r0, r6, ror r0
+   c:	73726966 	cmnvc	r2, #1671168	; 0x198000
+  10:	76726474 	undefined
+  14:	00000000 	andeq	r0, r0, r0
+  18:	007a7978 	rsbeqs	r7, sl, r8, ror r9
+Disassembly of section .data:
+
+00000000 <first_drv_fops>:
+	...
+   c:	0000003c 	andeq	r0, r0, ip, lsr r0
+	...
+Disassembly of section .gnu.linkonce.this_module:
+
+00000000 <__this_module>:
+	...
+   c:	5f767264 	swipl	0x00767264
+  10:	63617473 	cmnvs	r1, #1929379840	; 0x73000000
+  14:	74735f6b 	ldrvcbt	r5, [r3], #-3947
+  18:	65636172 	strvsb	r6, [r3, #-370]!
+  1c:	7672645f 	undefined
+	...
+Disassembly of section .bss:
+
+00000000 <gpfdat>:
+   0:	00000000 	andeq	r0, r0, r0
+
+00000004 <gpfcon>:
+   4:	00000000 	andeq	r0, r0, r0
+
+00000008 <major>:
+   8:	00000000 	andeq	r0, r0, r0
+
+0000000c <firstdrv_class>:
+   c:	00000000 	andeq	r0, r0, r0
+
+00000010 <firstdrv_class_dev>:
+  10:	00000000 	andeq	r0, r0, r0
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	cmpmi	r3, #0	; 0x0
+   4:	4728203a 	undefined
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	2e342e33 	mrccs	14, 1, r2, cr4, cr3, {1}
+  10:	47000035 	smladxmi	r0, r5, r0, r0
+  14:	203a4343 	eorcss	r4, sl, r3, asr #6
+  18:	554e4728 	strplb	r4, [lr, #-1832]
+  1c:	2e332029 	cdpcs	0, 3, cr2, cr3, cr9, {1}
+  20:	00352e34 	eoreqs	r2, r5, r4, lsr lr

@@ -1,0 +1,319 @@
+
+usb_mouse.o:     file format elf32-littlearm
+
+Disassembly of section .text:
+  Unable to handle kernel NULL pointer dereference at virtual address 00000035
+00000000 <usb_mouse_int>:
+   0:	e1a0c00d 	mov	ip, sp
+   4:	e92dd9f0 	stmdb	sp!, {r4, r5, r6, r7, r8, fp, ip, lr, pc}
+   8:	e24cb004 	sub	fp, ip, #4	; 0x4
+   c:	e59f5108 	ldr	r5, [pc, #264]	; 11c <.text+0x11c>
+  10:	e59f6108 	ldr	r6, [pc, #264]	; 120 <.text+0x120>
+  14:	e5953000 	ldr	r3, [r5]
+  18:	e5d6c000 	ldrb	ip, [r6]
+  1c:	e5d30000 	ldrb	r0, [r3]
+  20:	e3a01001 	mov	r1, #1	; 0x1
+  24:	e59f40f8 	ldr	r4, [pc, #248]	; 124 <.text+0x124>
+  28:	e0000001 	and	r0, r0, r1
+  2c:	e00cc001 	and	ip, ip, r1
+  30:	e15c0000 	cmp	ip, r0
+  34:	e1a07004 	mov	r7, r4
+  38:	e1a08004 	mov	r8, r4
+  3c:	e3a02026 	mov	r2, #38	; 0x26
+  40:	e1a03000 	mov	r3, r0
+  44:	0a000017 	beq	a8 <usb_mouse_int+0xa8>
+  48:	e5940000 	ldr	r0, [r4]
+  4c:	ebfffffe 	bl	4c <usb_mouse_int+0x4c>
+  50:	e3a01000 	mov	r1, #0	; 0x0
+  54:	e5940000 	ldr	r0, [r4]
+  58:	e1a02001 	mov	r2, r1
+  5c:	e1a03001 	mov	r3, r1
+  60:	ebfffffe 	bl	60 <usb_mouse_int+0x60>
+  64:	e5953000 	ldr	r3, [r5]
+  68:	e5d6c000 	ldrb	ip, [r6]
+  6c:	e5d33000 	ldrb	r3, [r3]
+  70:	e3a01001 	mov	r1, #1	; 0x1
+  74:	e2030002 	and	r0, r3, #2	; 0x2
+  78:	e20cc002 	and	ip, ip, #2	; 0x2
+  7c:	e20330ff 	and	r3, r3, #255	; 0xff
+  80:	e1a03133 	mov	r3, r3, lsr r1
+  84:	e15c0000 	cmp	ip, r0
+  88:	e3a0201f 	mov	r2, #31	; 0x1f
+  8c:	e0033001 	and	r3, r3, r1
+  90:	0a00002a 	beq	140 <usb_mouse_driver_probe+0x14>
+  94:	e5970000 	ldr	r0, [r7]
+  98:	ebfffffe 	bl	98 <usb_mouse_int+0x98>
+  9c:	e3a01000 	mov	r1, #0	; 0x0
+  a0:	e5970000 	ldr	r0, [r7]
+  a4:	e1a02001 	mov	r2, r1
+  a8:	e1a03001 	mov	r3, r1
+  ac:	ebfffffe 	bl	ac <usb_mouse_int+0xac>
+  b0:	e5953000 	ldr	r3, [r5]
+  b4:	e5d6c000 	ldrb	ip, [r6]
+  b8:	e5d33000 	ldrb	r3, [r3]
+  bc:	e20cc004 	and	ip, ip, #4	; 0x4
+  c0:	e2030004 	and	r0, r3, #4	; 0x4
+  c4:	e20330ff 	and	r3, r3, #255	; 0xff
+  c8:	e3a01001 	mov	r1, #1	; 0x1
+  cc:	e1a03123 	mov	r3, r3, lsr #2
+  d0:	e15c0000 	cmp	ip, r0
+  d4:	e3a0201c 	mov	r2, #28	; 0x1c
+  d8:	e0033001 	and	r3, r3, r1
+  dc:	0a00003d 	beq	1d8 <usb_mouse_driver_probe+0xac>
+  e0:	e5980000 	ldr	r0, [r8]
+  e4:	ebfffffe 	bl	e4 <usb_mouse_int+0xe4>
+  e8:	e3a01000 	mov	r1, #0	; 0x0
+  ec:	e5980000 	ldr	r0, [r8]
+  f0:	e1a02001 	mov	r2, r1
+  f4:	e1a03001 	mov	r3, r1
+  f8:	ebfffffe 	bl	f8 <usb_mouse_int+0xf8>
+  fc:	e5953000 	ldr	r3, [r5]
+ 100:	e59f2020 	ldr	r2, [pc, #32]	; 128 <.text+0x128>
+ 104:	e5d33000 	ldrb	r3, [r3]
+ 108:	e3a010d0 	mov	r1, #208	; 0xd0
+ 10c:	e5920000 	ldr	r0, [r2]
+ 110:	e5c63000 	strb	r3, [r6]
+ 114:	ebfffffe 	bl	114 <usb_mouse_int+0x114>
+ 118:	e89da9f0 	ldmia	sp, {r4, r5, r6, r7, r8, fp, sp, pc}
+ 11c:	0000000c 	andeq	r0, r0, ip
+ 120:	00000000 	andeq	r0, r0, r0
+ 124:	00000004 	andeq	r0, r0, r4
+ 128:	00000014 	andeq	r0, r0, r4, lsl r0
+
+0000012c <usb_mouse_driver_probe>:
+ 12c:	e1a0c00d 	mov	ip, sp
+ 130:	e92ddff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, ip, lr, pc}
+ 134:	e24cb004 	sub	fp, ip, #4	; 0x4
+ 138:	e24dd004 	sub	sp, sp, #4	; 0x4
+ 13c:	e5903004 	ldr	r3, [r0, #4]
+ 140:	e1a04000 	mov	r4, r0
+ 144:	e593600c 	ldr	r6, [r3, #12]
+ 148:	ebfffffe 	bl	148 <usb_mouse_driver_probe+0x1c>
+ 14c:	e59fc198 	ldr	ip, [pc, #408]	; 2ec <.text+0x2ec>
+ 150:	e3a08000 	mov	r8, #0	; 0x0
+ 154:	e58c0000 	str	r0, [ip]
+ 158:	e10f2000 	mrs	r2, CPSR
+ 15c:	e3823080 	orr	r3, r2, #128	; 0x80
+ 160:	e121f003 	msr	CPSR_c, r3
+ 164:	e5903018 	ldr	r3, [r0, #24]
+ 168:	e3833002 	orr	r3, r3, #2	; 0x2
+ 16c:	e5803018 	str	r3, [r0, #24]
+ 170:	e121f002 	msr	CPSR_c, r2
+ 174:	e59c2000 	ldr	r2, [ip]
+ 178:	e10f1000 	mrs	r1, CPSR
+ 17c:	e3813080 	orr	r3, r1, #128	; 0x80
+ 180:	e121f003 	msr	CPSR_c, r3
+ 184:	e5923018 	ldr	r3, [r2, #24]
+ 188:	e3833601 	orr	r3, r3, #1048576	; 0x100000
+ 18c:	e5823018 	str	r3, [r2, #24]
+ 190:	e121f001 	msr	CPSR_c, r1
+ 194:	e59c2000 	ldr	r2, [ip]
+ 198:	e10f1000 	mrs	r1, CPSR
+ 19c:	e3813080 	orr	r3, r1, #128	; 0x80
+ 1a0:	e121f003 	msr	CPSR_c, r3
+ 1a4:	e5923020 	ldr	r3, [r2, #32]
+ 1a8:	e3833040 	orr	r3, r3, #64	; 0x40
+ 1ac:	e5823020 	str	r3, [r2, #32]
+ 1b0:	e121f001 	msr	CPSR_c, r1
+ 1b4:	e59c2000 	ldr	r2, [ip]
+ 1b8:	e10f1000 	mrs	r1, CPSR
+ 1bc:	e3813080 	orr	r3, r1, #128	; 0x80
+ 1c0:	e121f003 	msr	CPSR_c, r3
+ 1c4:	e592301c 	ldr	r3, [r2, #28]
+ 1c8:	e3833102 	orr	r3, r3, #-2147483648	; 0x80000000
+ 1cc:	e582301c 	str	r3, [r2, #28]
+ 1d0:	e121f001 	msr	CPSR_c, r1
+ 1d4:	e59c2000 	ldr	r2, [ip]
+ 1d8:	e10f1000 	mrs	r1, CPSR
+ 1dc:	e3813080 	orr	r3, r1, #128	; 0x80
+ 1e0:	e121f003 	msr	CPSR_c, r3
+ 1e4:	e592301c 	ldr	r3, [r2, #28]
+ 1e8:	e3833201 	orr	r3, r3, #268435456	; 0x10000000
+ 1ec:	e582301c 	str	r3, [r2, #28]
+ 1f0:	e121f001 	msr	CPSR_c, r1
+ 1f4:	e59c0000 	ldr	r0, [ip]
+ 1f8:	ebfffffe 	bl	1f8 <usb_mouse_driver_probe+0xcc>
+ 1fc:	e594507c 	ldr	r5, [r4, #124]
+ 200:	e5d63002 	ldrb	r3, [r6, #2]
+ 204:	e5152058 	ldr	r2, [r5, #-88]
+ 208:	e1a03783 	mov	r3, r3, lsl #15
+ 20c:	e1833402 	orr	r3, r3, r2, lsl #8
+ 210:	e59f70d8 	ldr	r7, [pc, #216]	; 2f0 <.text+0x2f0>
+ 214:	e3833101 	orr	r3, r3, #1073741824	; 0x40000000
+ 218:	e3833080 	orr	r3, r3, #128	; 0x80
+ 21c:	e5873000 	str	r3, [r7]
+ 220:	e5d62005 	ldrb	r2, [r6, #5]
+ 224:	e5d63004 	ldrb	r3, [r6, #4]
+ 228:	e59f40c4 	ldr	r4, [pc, #196]	; 2f4 <.text+0x2f4>
+ 22c:	e1833402 	orr	r3, r3, r2, lsl #8
+ 230:	e5843000 	str	r3, [r4]
+ 234:	e1a00008 	mov	r0, r8
+ 238:	e3a010d0 	mov	r1, #208	; 0xd0
+ 23c:	ebfffffe 	bl	23c <usb_mouse_driver_probe+0x110>
+ 240:	e59fa0b0 	ldr	sl, [pc, #176]	; 2f8 <.text+0x2f8>
+ 244:	e59f90b0 	ldr	r9, [pc, #176]	; 2fc <.text+0x2fc>
+ 248:	e2455058 	sub	r5, r5, #88	; 0x58
+ 24c:	e58a0000 	str	r0, [sl]
+ 250:	e5941000 	ldr	r1, [r4]
+ 254:	e1a03009 	mov	r3, r9
+ 258:	e3a02020 	mov	r2, #32	; 0x20
+ 25c:	e1a00005 	mov	r0, r5
+ 260:	ebfffffe 	bl	260 <usb_mouse_driver_probe+0x134>
+ 264:	e59f3094 	ldr	r3, [pc, #148]	; 300 <.text+0x300>
+ 268:	e5972000 	ldr	r2, [r7]
+ 26c:	e5830000 	str	r0, [r3]
+ 270:	e5941000 	ldr	r1, [r4]
+ 274:	e59ac000 	ldr	ip, [sl]
+ 278:	e59f3084 	ldr	r3, [pc, #132]	; 304 <.text+0x304>
+ 27c:	e5d6e006 	ldrb	lr, [r6, #6]
+ 280:	e58c201c 	str	r2, [ip, #28]
+ 284:	e58c1030 	str	r1, [ip, #48]
+ 288:	e58c0028 	str	r0, [ip, #40]
+ 28c:	e58c3054 	str	r3, [ip, #84]
+ 290:	e58c8050 	str	r8, [ip, #80]
+ 294:	e58c5018 	str	r5, [ip, #24]
+ 298:	e5953018 	ldr	r3, [r5, #24]
+ 29c:	e24e2001 	sub	r2, lr, #1	; 0x1
+ 2a0:	e3530003 	cmp	r3, #3	; 0x3
+ 2a4:	e3a03001 	mov	r3, #1	; 0x1
+ 2a8:	e1a03213 	mov	r3, r3, lsl r2
+ 2ac:	058c3048 	streq	r3, [ip, #72]
+ 2b0:	e3e03000 	mvn	r3, #0	; 0x0
+ 2b4:	158ce048 	strne	lr, [ip, #72]
+ 2b8:	e58c3040 	str	r3, [ip, #64]
+ 2bc:	e5992000 	ldr	r2, [r9]
+ 2c0:	e59a3000 	ldr	r3, [sl]
+ 2c4:	e3a010d0 	mov	r1, #208	; 0xd0
+ 2c8:	e583202c 	str	r2, [r3, #44]
+ 2cc:	e59a2000 	ldr	r2, [sl]
+ 2d0:	e5923024 	ldr	r3, [r2, #36]
+ 2d4:	e3833004 	orr	r3, r3, #4	; 0x4
+ 2d8:	e5823024 	str	r3, [r2, #36]
+ 2dc:	e59a0000 	ldr	r0, [sl]
+ 2e0:	ebfffffe 	bl	2e0 <usb_mouse_driver_probe+0x1b4>
+ 2e4:	e3a00000 	mov	r0, #0	; 0x0
+ 2e8:	e89daff8 	ldmia	sp, {r3, r4, r5, r6, r7, r8, r9, sl, fp, sp, pc}
+ 2ec:	00000004 	andeq	r0, r0, r4
+ 2f0:	00000008 	andeq	r0, r0, r8
+ 2f4:	00000010 	andeq	r0, r0, r0, lsl r0
+ 2f8:	00000014 	andeq	r0, r0, r4, lsl r0
+ 2fc:	00000018 	andeq	r0, r0, r8, lsl r0
+ 300:	0000000c 	andeq	r0, r0, ip
+ 304:	00000000 	andeq	r0, r0, r0
+
+00000308 <usb_mouse_driver_disconnect>:
+ 308:	e1a0c00d 	mov	ip, sp
+ 30c:	e92dd830 	stmdb	sp!, {r4, r5, fp, ip, lr, pc}
+ 310:	e24cb004 	sub	fp, ip, #4	; 0x4
+ 314:	e59f504c 	ldr	r5, [pc, #76]	; 368 <.text+0x368>
+ 318:	e590407c 	ldr	r4, [r0, #124]
+ 31c:	e5950000 	ldr	r0, [r5]
+ 320:	ebfffffe 	bl	320 <usb_mouse_driver_disconnect+0x18>
+ 324:	e5950000 	ldr	r0, [r5]
+ 328:	ebfffffe 	bl	328 <usb_mouse_driver_disconnect+0x20>
+ 32c:	e59f3038 	ldr	r3, [pc, #56]	; 36c <.text+0x36c>
+ 330:	e59f5038 	ldr	r5, [pc, #56]	; 370 <.text+0x370>
+ 334:	e5931000 	ldr	r1, [r3]
+ 338:	e59f3034 	ldr	r3, [pc, #52]	; 374 <.text+0x374>
+ 33c:	e2444058 	sub	r4, r4, #88	; 0x58
+ 340:	e5932000 	ldr	r2, [r3]
+ 344:	e59f302c 	ldr	r3, [pc, #44]	; 378 <.text+0x378>
+ 348:	e1a00004 	mov	r0, r4
+ 34c:	e5933000 	ldr	r3, [r3]
+ 350:	ebfffffe 	bl	350 <usb_mouse_driver_disconnect+0x48>
+ 354:	e5950000 	ldr	r0, [r5]
+ 358:	ebfffffe 	bl	358 <usb_mouse_driver_disconnect+0x50>
+ 35c:	e5950000 	ldr	r0, [r5]
+ 360:	ebfffffe 	bl	360 <usb_mouse_driver_disconnect+0x58>
+ 364:	e89da830 	ldmia	sp, {r4, r5, fp, sp, pc}
+ 368:	00000014 	andeq	r0, r0, r4, lsl r0
+ 36c:	00000010 	andeq	r0, r0, r0, lsl r0
+ 370:	00000004 	andeq	r0, r0, r4
+ 374:	0000000c 	andeq	r0, r0, ip
+ 378:	00000018 	andeq	r0, r0, r8, lsl r0
+
+0000037c <init_module>:
+ 37c:	e1a0c00d 	mov	ip, sp
+ 380:	e92dd800 	stmdb	sp!, {fp, ip, lr, pc}
+ 384:	e24cb004 	sub	fp, ip, #4	; 0x4
+ 388:	e59f1010 	ldr	r1, [pc, #16]	; 3a0 <.text+0x3a0>
+ 38c:	e59f2010 	ldr	r2, [pc, #16]	; 3a4 <.text+0x3a4>
+ 390:	e59f0010 	ldr	r0, [pc, #16]	; 3a8 <.text+0x3a8>
+ 394:	ebfffffe 	bl	394 <init_module+0x18>
+ 398:	e3a00000 	mov	r0, #0	; 0x0
+ 39c:	e89da800 	ldmia	sp, {fp, sp, pc}
+ 3a0:	00000000 	andeq	r0, r0, r0
+ 3a4:	00000014 	andeq	r0, r0, r4, lsl r0
+ 3a8:	00000000 	andeq	r0, r0, r0
+
+000003ac <cleanup_module>:
+ 3ac:	e1a0c00d 	mov	ip, sp
+ 3b0:	e92dd800 	stmdb	sp!, {fp, ip, lr, pc}
+ 3b4:	e24cb004 	sub	fp, ip, #4	; 0x4
+ 3b8:	e59f0004 	ldr	r0, [pc, #4]	; 3c4 <.text+0x3c4>
+ 3bc:	ebfffffe 	bl	3bc <cleanup_module+0x10>
+ 3c0:	e89da800 	ldmia	sp, {fp, sp, pc}
+ 3c4:	00000000 	andeq	r0, r0, r0
+Disassembly of section .data:
+
+00000000 <usb_mouse_driver>:
+   0:	00000000 	andeq	r0, r0, r0
+   4:	0000012c 	andeq	r0, r0, ip, lsr #2
+   8:	00000308 	andeq	r0, r0, r8, lsl #6
+	...
+  20:	000000c4 	andeq	r0, r0, r4, asr #1
+	...
+
+000000c4 <usb_mouse_driver_id_table>:
+  c4:	00000380 	andeq	r0, r0, r0, lsl #7
+	...
+  d0:	02010300 	andeq	r0, r1, #0	; 0x0
+  d4:	00000000 	andeq	r0, r0, r0
+Disassembly of section .bss:
+
+00000000 <pre_val.0>:
+   0:	00000000 	andeq	r0, r0, r0
+
+00000004 <usb_mouse_dev>:
+   4:	00000000 	andeq	r0, r0, r0
+
+00000008 <usb_pipe>:
+   8:	00000000 	andeq	r0, r0, r0
+
+0000000c <usb_buff>:
+   c:	00000000 	andeq	r0, r0, r0
+
+00000010 <usb_len>:
+  10:	00000000 	andeq	r0, r0, r0
+
+00000014 <usb_urb>:
+  14:	00000000 	andeq	r0, r0, r0
+
+00000018 <usb_buff_phy>:
+  18:	00000000 	andeq	r0, r0, r0
+Disassembly of section .modinfo:
+
+00000000 <__mod_license160>:
+   0:	6563696c 	strvsb	r6, [r3, #-2412]!
+   4:	3d65736e 	stcccl	3, cr7, [r5, #-440]!
+   8:	004c5047 	subeq	r5, ip, r7, asr #32
+Disassembly of section .rodata.str1.4:
+
+00000000 <.rodata.str1.4>:
+   0:	5f627375 	swipl	0x00627375
+   4:	73756f6d 	cmnvc	r5, #436	; 0x1b4
+   8:	72645f65 	rsbvc	r5, r4, #404	; 0x194
+   c:	72657669 	rsbvc	r7, r5, #110100480	; 0x6900000
+  10:	00000000 	andeq	r0, r0, r0
+  14:	5f627375 	swipl	0x00627375
+  18:	73756f6d 	cmnvc	r5, #436	; 0x1b4
+  1c:	00000065 	andeq	r0, r0, r5, rrx
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	cmpmi	r3, #0	; 0x0
+   4:	4728203a 	undefined
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	2e342e33 	mrccs	14, 1, r2, cr4, cr3, {1}
+  10:	Address 0x10 is out of bounds.
+
